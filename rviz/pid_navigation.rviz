@@ -1,0 +1,65 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: odom
+    Background Color: 35; 35; 35
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 20
+    - Class: rviz_default_plugins/Map
+      Name: Monitoring map
+      Enabled: true
+      Alpha: 0.8
+      Topic:
+        Value: /monitoring_map
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 1
+    - Class: rviz_default_plugins/LaserScan
+      Name: Laser scan
+      Enabled: true
+      Size (m): 0.03
+      Topic:
+        Value: /scan
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 5
+    - Class: rviz_default_plugins/Pose
+      Name: Navigation target
+      Enabled: true
+      Shape: Arrow
+      Topic:
+        Value: /navigation_target
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 5
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Frame Timeout: 15
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Current View
+      Angle: -1.5708
+      Scale: 75
+      Target Frame: odom
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1200
+  Height: 850

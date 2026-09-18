@@ -1,0 +1,47 @@
+coverage_mapper:
+  ros__parameters:
+    map_width: 400
+    map_height: 400
+    map_resolution: 0.05
+    map_origin_x: -10.0
+    map_origin_y: -10.0
+    monitoring_radius: 0.75
+
+frontier_planner:
+  ros__parameters:
+    stop_distance: 0.20
+    lookahead_cells: 8
+    target_coverage: 0.98
+    max_replans: 500
+
+safety_supervisor:
+  ros__parameters:
+    max_angular_speed: 1.5
+    stop_distance: 0.20
+    recovery_linear_speed: 0.10
+    sensor_timeout: 0.5
+    stall_timeout: 2.0
+    progress_distance: 0.05
+    control_period: 0.05
+    max_linear_speed: 0.22
+    contact_distance: 0.12
+    rear_clearance: 0.30
+    lateral_slow_distance: 0.30
+    front_slow_distance: 0.45
+
+pid_controller:
+  ros__parameters:
+    kp: 1.5
+    ki: 0.0
+    kd: 0.1
+    integral_limit: 0.5
+    max_angular_speed: 1.5
+    max_linear_speed: 0.22
+    arrival_tolerance: 0.10
+    alignment_tolerance: 0.35
+    distance_gain: 0.5
+    stop_distance: 0.20
+    sensor_timeout: 0.5
+    control_period: 0.05
+    min_linear_speed: 0.04
+    derivative_alpha: 0.2
