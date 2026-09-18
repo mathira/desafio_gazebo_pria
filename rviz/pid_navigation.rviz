@@ -1,65 +1,133 @@
 Panels:
   - Class: rviz_common/Displays
     Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+  - Class: rviz_common/Time
+    Name: Time
 Visualization Manager:
   Class: ""
   Global Options:
+    Background Color: 30; 36; 46
     Fixed Frame: odom
-    Background Color: 35; 35; 35
-    Frame Rate: 20
+    Frame Rate: 30
   Displays:
     - Class: rviz_default_plugins/Grid
-      Name: Grid
+      Name: Reference grid
       Enabled: true
+      Alpha: 0.25
       Cell Size: 1
-      Plane Cell Count: 20
+      Color: 120; 140; 160
+      Line Style:
+        Line Type: Lines
+        Value: 1
+      Plane: XY
+      Plane Cell Count: 40
+      Reference Frame: <Fixed Frame>
     - Class: rviz_default_plugins/Map
-      Name: Monitoring map
+      Name: Occupancy map
       Enabled: true
-      Alpha: 0.8
+      Alpha: 0.45
+      Color Scheme: map
+      Draw Behind: true
       Topic:
-        Value: /monitoring_map
-        Reliability Policy: Reliable
-        Durability Policy: Volatile
         Depth: 1
-    - Class: rviz_default_plugins/LaserScan
-      Name: Laser scan
-      Enabled: true
-      Size (m): 0.03
-      Topic:
-        Value: /scan
-        Reliability Policy: Best Effort
         Durability Policy: Volatile
-        Depth: 5
-    - Class: rviz_default_plugins/Pose
-      Name: Navigation target
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /coverage_map
+    - Class: rviz_default_plugins/Map
+      Name: Monitored area
       Enabled: true
+      Alpha: 0.85
+      Color Scheme: map
+      Draw Behind: false
+      Topic:
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /monitoring_map
+    - Class: rviz_default_plugins/LaserScan
+      Name: LiDAR
+      Enabled: true
+      Color: 255; 220; 70
+      Decay Time: 0.15
+      Position Transformer: XYZ
+      Size (m): 0.035
+      Style: Points
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Value: /scan
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot
+      Enabled: true
+      Description Source: Topic
+      Description Topic: /robot_description
+      Visual Enabled: true
+      Collision Enabled: false
+      Update Interval: 0
+    - Class: rviz_default_plugins/Odometry
+      Name: Odometry trail
+      Enabled: true
+      Keep: 80
       Shape: Arrow
       Topic:
-        Value: /navigation_target
-        Reliability Policy: Reliable
-        Durability Policy: Volatile
         Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /odom
+      Covariance:
+        Position:
+          Value: false
+        Orientation:
+          Value: false
+        Value: false
+    - Class: rviz_default_plugins/Pose
+      Name: Current navigation target
+      Enabled: true
+      Color: 80; 255; 120
+      Alpha: 1
+      Shape: Arrow
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /navigation_target
     - Class: rviz_default_plugins/TF
-      Name: TF
+      Name: Frames
       Enabled: true
       Frame Timeout: 15
       Show Arrows: true
-      Show Axes: true
-      Show Names: false
+      Show Axes: false
+      Show Names: true
+      Marker Scale: 0.35
+    - Class: rviz_default_plugins/Axes
+      Name: Robot axes
+      Enabled: false
+      Length: 0.5
+      Radius: 0.03
+      Reference Frame: base_link
   Tools:
     - Class: rviz_default_plugins/Interact
     - Class: rviz_default_plugins/MoveCamera
     - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
   Views:
     Current:
       Class: rviz_default_plugins/TopDownOrtho
-      Name: Current View
+      Name: Mission overview
       Angle: -1.5708
-      Scale: 75
+      Scale: 35
       Target Frame: odom
       X: 0
       Y: 0
-Window Geometry:
-  Width: 1200
-  Height: 850
+  Window Geometry:
+    Height: 900
+    Width: 1440
